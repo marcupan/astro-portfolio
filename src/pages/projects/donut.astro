@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+import Canvas from '../../components/Canvas.svelte'
+---
+
+<Layout title="Donut page">
+	<main>
+		<h1 class="mb-10 text-5xl font-thin">Donut Example</h1>
+
+		<Canvas client:only="svelte" />
+	</main>
+</Layout>
+
+<style>
+	main {
+		padding: 1.5rem;
+	}
+</style>

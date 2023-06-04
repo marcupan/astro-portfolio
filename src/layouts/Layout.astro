@@ -1,36 +1,87 @@
 ---
 export interface Props {
-	title: string;
+	title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content="Astro Portfolio test" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<div class="progress"></div>
+
 		<slot />
 	</body>
 </html>
 <style is:global>
 	:root {
 		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60);
+
+		--scroll: 0;
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+
+		background-color: #99c0ff;
+		background-image: radial-gradient(at 76% 45%, hsla(197, 88%, 72%, 1) 0px, transparent 50%),
+			radial-gradient(at 46% 85%, hsla(95, 92%, 79%, 1) 0px, transparent 50%),
+			radial-gradient(at 56% 7%, hsla(236, 67%, 78%, 1) 0px, transparent 50%),
+			radial-gradient(at 1% 57%, hsla(219, 64%, 72%, 1) 0px, transparent 50%),
+			radial-gradient(at 2% 33%, hsla(69, 69%, 79%, 1) 0px, transparent 50%),
+			radial-gradient(at 25% 84%, hsla(267, 72%, 72%, 1) 0px, transparent 50%),
+			radial-gradient(at 52% 74%, hsla(282, 93%, 75%, 1) 0px, transparent 50%);
+
+		background-size: 200% 200%;
+		background-repeat: no-repeat;
+		animation: gradient 10s linear;
+
+		scroll-behavior: smooth;
+		overflow: hidden;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+
+	html,
+	body,
+	main {
+		height: 100%;
+	}
+
+	.progress {
+		height: 3px;
+		width: 0;
+		background-color: #fff;
+		position: fixed;
+		top: 0;
+		left: 0;
+		animation: progress 1s linear;
+	}
+
+	@keyframes progress {
+		to {
+			background-color: rgb(20, 255, 226);
+			width: 100%;
+		}
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 50% 0;
+		}
 	}
 </style>

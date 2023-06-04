@@ -1,81 +1,266 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+import avatar from '../assets/images/avatar.png'
 import Card from '../components/Card.astro'
+
+import ImageBg from '../assets/images/model-thumbnail.png'
+
+const experienceList = [
+	{
+		period: 'Oct 2020 - Present · 2 yrs 8 mos',
+		position: 'Software Engineer',
+		company: 'Software Engineer'
+	},
+	{
+		period: 'Aug 2019 - Aug 2020 · 1 yr 1 mo',
+		position: 'React Native Developer',
+		company: 'Clearmove'
+	},
+	{
+		period: 'Oct 2016 - Jul 2019 · 2 yrs 10 mos',
+		position: 'Frontend Developer',
+		company: 'COSMONOVA Telecom | Data centers | Software | IPTV'
+	},
+	{
+		period: 'Apr 2016 - Oct 2016 · 7 mos',
+		position: 'Web developer',
+		company: 'DEC Educational Consultancy'
+	}
+]
+
+const skillsList = [
+	{
+		name: 'JS',
+		time: '7 yrs'
+	},
+	{
+		name: 'TS',
+		time: '5 yrs'
+	},
+	{
+		name: 'React',
+		time: '5 yrs'
+	},
+	{
+		name: 'React Native',
+		time: '4 yrs'
+	}
+]
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Portfolio">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<div class="sidebar">
+			<div class="flex items-center justify-between">
+				<div class="text-base">@marcupan</div>
+				<div class="text-base">Software Engineer</div>
+			</div>
+			<div class="m-4 overflow-hidden rounded-2xl">
+				<img src={avatar} alt="avatar" class="avatar" />
+			</div>
+			<div class="m-4 flex flex-col items-center">
+				<a href="mailto:lorem@gmail.com" class="text-center text-2xl font-light">
+					meloydemon@gmail.com
+				</a>
+				<div class="text-center text-2xl font-light">Kyiv, Ukraine</div>
+			</div>
+			<ul class="m-4 flex items-center justify-center">
+				<li
+					class="mx-1 flex h-[36px] w-[36px] items-center justify-center rounded-full border border-black"
+				>
+					<a href="https://www.linkedin.com/in/dem-marcupan-501aa7a7/" target="_blank" class="icon">
+						Ln
+					</a>
+				</li>
+				<li
+					class="mx-1 flex h-[36px] w-[36px] items-center justify-center rounded-full border border-black"
+				>
+					<a href="https://github.com/marcupan" target="_blank" class="icon">Gh</a>
+				</li>
+				<li
+					class="mx-1 flex h-[36px] w-[36px] items-center justify-center rounded-full border border-black"
+				>
+					<a href="https://www.behance.net/DemMarcupan" target="_blank" class="icon">Be</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="section flex flex-col">
+				<h1 class="mb-10 text-7xl font-thin">Hi, I am Dmytro, Front-End developer</h1>
+				<a href="#portfolio" class="button self-end hover:bg-white/50">Projects</a>
+			</div>
+			<div class="section w-6/12">
+				<ul>
+					<li class="pb-2 font-thin uppercase">
+						Driven and dedicated JavaScript developer with a strong desire to excel in complex
+						projects.
+					</li>
+					<li class="pb-2 font-thin uppercase">
+						Aspiring to progress from a skilled developer to a Senior Engineer and ultimately evolve
+						into a Software Architect.
+					</li>
+					<li class="pb-2 font-thin uppercase">
+						Passionate about tackling challenging technical problems and delivering scalable
+						software solutions.
+					</li>
+					<li class="pb-2 font-thin uppercase">
+						Open to exploring various languages, frameworks and technologies to broaden my skill set
+						and contribute to cutting-edge developments in the industry.
+					</li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="section">
+				<h3 class="section-title">Experience</h3>
+				<ul class="px-1.5">
+					{
+						experienceList.map((experience) => (
+							<li class="experience-item relative pb-10 pl-10">
+								<p class="text-base text-black/75">{experience.period}</p>
+								<p class="mb-1 text-2xl font-thin">{experience.position}</p>
+								<p class="text-sm text-black/75">{experience.company}</p>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div class="section">
+				<h3 class="section-title">Skills</h3>
+				<ul class="flex items-center px-1.5">
+					{
+						skillsList.map((skill) => (
+							<li class="skill-item">
+								<span>{skill.name}</span> <span>{skill.time}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div id="portfolio" class="section">
+				<h3 class="section-title">Portfolio</h3>
+				<ul class="grid grid-cols-2 gap-4">
+					<Card
+						href="/projects/donut"
+						image={ImageBg}
+						title="Three.js Donut"
+						description="Imported donut model with Three.js interactivity"
+					/>
+				</ul>
+			</div>
+		</div>
 	</main>
+
+	<script>
+		const content = document.getElementById('content')
+
+		content.addEventListener(
+			'scroll',
+			() => {
+				const scrollProgress = content.scrollTop / (content.scrollHeight - content.clientHeight)
+
+				document.documentElement.style.setProperty('--scroll', scrollProgress.toString())
+			},
+			false
+		)
+	</script>
 </Layout>
 
 <style>
 	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
+		grid-template-columns: 32rem 1fr;
+		grid-gap: 1.5rem;
+		padding: 1.5rem;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	#progress {
+		height: 3px;
+		width: 0;
+		background-color: #fff;
+		position: fixed;
+		top: 0;
+		left: 0;
+		animation: progress 1s linear;
+	}
+	@keyframes progress {
+		to {
+			background-color: rgb(20, 255, 226);
+			width: 100%;
+		}
+	}
+
+	#content {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		padding-right: 17px;
+		box-sizing: content-box;
+		scroll-behavior: smooth;
+	}
+
+	.section {
+		margin-bottom: 4rem;
+	}
+	.section-title {
+		font-size: 48px;
+		line-height: 60px;
+		font-weight: 300;
+		margin-bottom: 33px;
+	}
+
+	.button {
+		background: transparent;
+		text-align: center;
+		padding: 11px 58px 10px 58px;
+		display: inline-flex;
+		align-items: center;
+		border-radius: 30px;
+		justify-content: center;
+		text-transform: uppercase;
+		transition: 0.3s;
+		cursor: pointer;
+		border: 2px solid black;
+	}
+
+	.experience-item:before {
+		content: '';
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: black;
+		left: -6px;
+		top: 7px;
+		transition: 0.3s;
+	}
+	.experience-item:after {
+		content: '';
+		background: black;
+		width: 1px;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 10px;
+		z-index: -1;
+	}
+
+	.skill-item {
+		display: flex;
+		margin: 0 8px 8px 0;
+		border-radius: 4px;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		transform: skewX(-5deg);
+	}
+	.skill-item span:first-of-type {
+		padding: 4px 6px;
+		background-color: transparent;
+	}
+	.skill-item span:last-of-type {
+		padding: 4px 6px;
+		background-color: rgba(255, 255, 255, 0.5);
 	}
 </style>
